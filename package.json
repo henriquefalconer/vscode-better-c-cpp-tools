@@ -1,5 +1,5 @@
 {
-  "name": "better-c-cpp-tools",
+	"name": "better-c-cpp-tools",
 	"displayName": "Better C/C++ Tools",
 	"description": "",
 	"version": "0.0.1",
@@ -10,16 +10,49 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:better-c-cpp-tools.helloWorld"
+		"onCommand:better-c-cpp-tools.execInTerminal"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "better-c-cpp-tools.helloWorld",
-				"title": "Hello World"
+				"command": "better-c-cpp-tools.execInTerminal",
+				"category": "C/C++",
+				"title": "Run C/C++ File in Terminal",
+				"icon": "$(play)"
 			}
-		]
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"when": "resourceLangId == c || resourceLangId == cpp",
+					"command": "better-c-cpp-tools.execInTerminal",
+					"group": "navigation@0"
+				}
+			],
+			"editor/context": [
+				{
+					"when": "resourceLangId == c || resourceLangId == cpp",
+					"command": "better-c-cpp-tools.execInTerminal",
+					"group": "navigation@0"
+				}
+			],
+			"explorer/context": [
+				{
+					"when": "resourceLangId == c || resourceLangId == cpp",
+					"command": "better-c-cpp-tools.execInTerminal",
+					"group": "navigation@0"
+				}
+			],
+			"editor/title": [
+				{
+					"when": "resourceLangId == c || resourceLangId == cpp",
+					"command": "better-c-cpp-tools.execInTerminal",
+					"group": "navigation@0",
+					"title": "Rodar arquivo C/C++ no Terminal"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
